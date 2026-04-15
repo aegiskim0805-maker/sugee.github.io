@@ -1,37 +1,169 @@
-<script>
-let data = {
-  hero: { 
-    name: '이0지', 
-    tagline: '글로벌 모빌리티와 우주 산업을 선도하는 혁신가.\n테슬라의 일론 머스크와 비견되는 유일한 자산가입니다.' 
-  },
-  about: {
-    photo: '', // 여기에 나중에 생성한 이미지 URL을 넣으세요.
-    name: '이0지', school: '글로벌 자산가', grade: 'The Visionary',
-    major: '전 세계 하이퍼카 200대 소유', univ: '지구 및 화성 개발', email: 'vipvip@empire.com',
-    text: '나는 단순한 부를 넘어 인류의 미래를 설계합니다. 일론 머스크와 함께 세계 경제의 축을 담당하며, 내 차고에는 당신이 꿈꾸는 모든 한정판 하이퍼카가 잠들어 있습니다.'
-  },
-  activities: [
-    { type: 'Asset', title: '200+ 하이퍼카 컬렉션', period: 'Current', desc: '전 세계 1대 한정판을 포함한 200대 이상의 차량을 보유 중입니다.' },
-    { type: 'Business', title: '글로벌 인프라 독점', period: '2020 – 현재', desc: '머스크와의 협력을 통해 차세대 뉴럴 네트워크 사업을 확장하고 있습니다.' },
-    { type: 'Status', title: '포브스 선정 세계 부호 1위 다툼', period: '2026', desc: '자산 가치 측정 불가 수준의 압도적 재력을 증명했습니다.' }
-  ],
-  projects: [
-    { title: 'Bugatti La Voiture Noire', desc: '세상에서 가장 비싼 신차로 불렸던 1,100만 파운드(약 180억 원) 이상의 하이퍼카.', tags: ['Bugatti', 'Hypercar', 'V16'], period: 'Main Garage' },
-    { title: 'Rolls-Royce Boat Tail', desc: '약 2,800만 달러(약 370억 원). 예술적 장인 정신의 정점을 보여주는 맞춤 제작 차량.', tags: ['Rolls-Royce', 'Custom', 'Luxury'], period: 'Weekend Drive' },
-    { title: 'Pagani Huayra Codalunga', desc: '단 5대만 제작된 예술 작품. 유선형 바디의 극치를 달리는 차량.', tags: ['Pagani', 'Limited', 'Art'], period: 'Collection' },
-    { title: 'Koenigsegg Jesko Absolut', desc: '지상에서 가장 빠른 속도를 자랑하는 공학의 결정체.', tags: ['Koenigsegg', 'Top Speed', 'Engineering'], period: 'Track Only' }
-  ],
-  gallery: [],
-  videos: [
-    { title: 'My Private Garage Tour', desc: '200대의 슈퍼카가 잠들어 있는 개인 차고의 모습입니다.', url: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ' }
-  ],
-  contact: {
-    intro: '비즈니스 협업이나 우주 개발 관련 문의는 비서를 통해 전달해 주세요.',
-    links: [
-      { label: 'PRIVATE', value: '0지 엠파이어 빌딩', href: '#' },
-      { label: 'JET', value: 'Private Jet Ready', href: '#' }
-    ]
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>이0지 | Global Magnate Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;600;700&family=DM+Mono:ital,wght@0,300;0,400;1,300&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #050505;
+    --bg2: #0a0a0a;
+    --bg3: #111111;
+    --accent: #d4af37; /* 럭셔리 골드 */
+    --accent2: #f9e29a;
+    --text: #ffffff;
+    --text2: #a0a0a0;
+    --border: #221f1a;
+    --card: #0e0e0e;
+    --danger: #ff4d4d;
   }
-};
-// ... 기존 렌더링 로직 유지
-</script>
+  /* 기존 스타일 유지 및 색상 최적화 */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--text); font-family: 'Noto Serif KR', serif; min-height: 100vh; overflow-x: hidden; }
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1.2rem 3rem; background: rgba(5,5,5,.9); backdrop-filter: blur(15px); border-bottom: 1px solid var(--border); }
+  .nav-logo { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--accent); font-weight: 900; letter-spacing: .1em; }
+  
+  #hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 6rem 3rem; position: relative; }
+  .hero-tag { font-family: 'DM Mono', monospace; font-size: .8rem; color: var(--accent); text-transform: uppercase; margin-bottom: 1.5rem; display: flex; align-items: center; gap: .8rem; }
+  .hero-name { font-family: 'Playfair Display', serif; font-size: clamp(3.5rem, 10vw, 7.5rem); font-weight: 900; line-height: 1; margin-bottom: 1.5rem; }
+  .hero-name span { color: var(--accent); }
+  .hero-sub { font-size: 1.2rem; color: var(--text2); line-height: 1.8; max-width: 650px; }
+
+  .activity-grid, .project-list { display: grid; gap: 2rem; }
+  .activity-card, .project-item { background: var(--card); border: 1px solid var(--border); padding: 2.5rem; transition: 0.4s; }
+  .activity-card:hover, .project-item:hover { border-color: var(--accent); transform: translateY(-10px); box-shadow: 0 20px 40px rgba(212,175,55,0.1); }
+  
+  .tag { border: 1px solid var(--accent); color: var(--accent); padding: 0.3rem 0.8rem; border-radius: 0; font-family: 'DM Mono'; font-size: 0.7rem; }
+  footer { padding: 4rem 3rem; border-top: 1px solid var(--border); text-align: center; color: var(--text2); font-family: 'DM Mono'; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">LEE 0-JI EMPIRE</div>
+  <div class="nav-links" style="display:flex; gap:2rem;">
+    <a href="#about" style="color:var(--text); text-decoration:none; font-size:0.8rem;">VISION</a>
+    <a href="#activities" style="color:var(--text); text-decoration:none; font-size:0.8rem;">ASSETS</a>
+    <a href="#projects" style="color:var(--text); text-decoration:none; font-size:0.8rem;">GARAGE</a>
+  </div>
+</nav>
+
+<section id="hero">
+  <div class="hero-inner">
+    <div class="hero-tag">World's Most Influential Individual</div>
+    <h1 class="hero-name">이<span>0지</span></h1>
+    <p class="hero-sub">테슬라의 일론 머스크와 나란히 세계 경제를 설계합니다.<br>지구상의 모든 하이퍼카 200대 이상을 소유한 유일한 비저너리.</p>
+  </div>
+</section>
+
+<section id="about" style="padding: 10rem 3rem;">
+  <div style="max-width:1100px; margin:0 auto; display:grid; grid-template-columns: 1fr 1fr; gap:5rem;">
+    <div style="border:1px solid var(--accent); padding:1rem;">
+      <div style="background:#111; aspect-ratio:3/4; display:flex; align-items:center; justify-content:center; color:var(--accent);">
+        [ 최상위 보안 등급 사진 공개 예정 ]
+      </div>
+    </div>
+    <div>
+      <h2 style="font-family:'Playfair Display'; font-size:3rem; margin-bottom:2rem; color:var(--accent);">The Wealth</h2>
+      <p style="line-height:2; color:var(--text2); font-size:1.1rem;">
+        나의 재력은 단순히 숫자로 표현되지 않습니다. 기술 혁신과 우주 산업의 정점에서 일론 머스크와 경쟁하며, 전 세계 단 1대뿐인 한정판 차량들을 수집하는 것이 나의 유일한 취미입니다. 200대가 넘는 나의 차고는 인류 자동차 공학의 박물관과 다름없습니다.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section id="activities" style="padding: 5rem 3rem;">
+  <h2 style="font-family:'Playfair Display'; text-align:center; font-size:3rem; margin-bottom:4rem;">Global Status</h2>
+  <div class="activity-grid" style="grid-template-columns: repeat(3, 1fr);">
+    <div class="activity-card">
+      <div style="color:var(--accent); margin-bottom:1rem;">01</div>
+      <h3>200+ Hypercar</h3>
+      <p style="color:var(--text2); margin-top:1rem;">부가티, 파가니, 코닉세그 등 전 세계 희귀 모델 200대 이상 상시 보유 중.</p>
+    </div>
+    <div class="activity-card">
+      <div style="color:var(--accent); margin-bottom:1rem;">02</div>
+      <h3>Elon's Partner</h3>
+      <p style="color:var(--text2); margin-top:1rem;">테슬라 및 스페이스X의 주요 전략적 파트너이자 유일한 라이벌.</p>
+    </div>
+    <div class="activity-card">
+      <div style="color:var(--accent); margin-bottom:1rem;">03</div>
+      <h3>Private Island</h3>
+      <p style="color:var(--text2); margin-top:1rem;">전 세계 주요 거점에 위치한 12개의 개인 섬 및 전용기 운용.</p>
+    </div>
+  </div>
+</section>
+
+<section id="projects" style="padding: 10rem 3rem;">
+  <h2 style="font-family:'Playfair Display'; font-size:3rem; margin-bottom:4rem; color:var(--accent);">0지's Private Garage Top 5</h2>
+  <div class="project-list">
+    <div class="project-item">
+      <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+        <div>
+          <h3 style="font-size:2rem; margin-bottom:1rem;">Rolls-Royce Boat Tail</h3>
+          <p style="color:var(--text2); max-width:700px; margin-bottom:1.5rem;">약 370억 원. 전 세계 단 3대만 존재하는 비스포크 모델. 나의 주말 드라이브용 차량.</p>
+          <div style="display:flex; gap:0.5rem;">
+            <span class="tag">Bespoke</span><span class="tag">Luxury</span><span class="tag">$28M</span>
+          </div>
+        </div>
+        <div style="text-align:right; font-family:'DM Mono'; color:var(--accent);">OWNED</div>
+      </div>
+    </div>
+    <div class="project-item">
+      <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+        <div>
+          <h3 style="font-size:2rem; margin-bottom:1rem;">Bugatti La Voiture Noire</h3>
+          <p style="color:var(--text2); max-width:700px; margin-bottom:1.5rem;">약 240억 원. 부가티 역사상 가장 아름다운 원오프 하이퍼카.</p>
+          <div style="display:flex; gap:0.5rem;">
+            <span class="tag">Bugatti</span><span class="tag">One-off</span><span class="tag">$18.7M</span>
+          </div>
+        </div>
+        <div style="text-align:right; font-family:'DM Mono'; color:var(--accent);">OWNED</div>
+      </div>
+    </div>
+    <div class="project-item">
+      <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+        <div>
+          <h3 style="font-size:2rem; margin-bottom:1rem;">Pagani Zonda HP Barchetta</h3>
+          <p style="color:var(--text2); max-width:700px; margin-bottom:1.5rem;">약 230억 원. 파가니의 정수, 지붕 없는 예술 작품.</p>
+          <div style="display:flex; gap:0.5rem;">
+            <span class="tag">Pagani</span><span class="tag">Art</span><span class="tag">$17.5M</span>
+          </div>
+        </div>
+        <div style="text-align:right; font-family:'DM Mono'; color:var(--accent);">OWNED</div>
+      </div>
+    </div>
+    <div class="project-item">
+      <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+        <div>
+          <h3 style="font-size:2rem; margin-bottom:1rem;">Koenigsegg Jesko Absolut</h3>
+          <p style="color:var(--text2); max-width:700px; margin-bottom:1.5rem;">지상에서 가장 빠른 속도를 자랑하는 공학의 결정체.</p>
+          <div style="display:flex; gap:0.5rem;">
+            <span class="tag">Speed</span><span class="tag">Hypercar</span><span class="tag">$4M</span>
+          </div>
+        </div>
+        <div style="text-align:right; font-family:'DM Mono'; color:var(--accent);">OWNED</div>
+      </div>
+    </div>
+    <div class="project-item">
+      <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+        <div>
+          <h3 style="font-size:2rem; margin-bottom:1rem;">Mercedes-Maybach Exelero</h3>
+          <p style="color:var(--text2); max-width:700px; margin-bottom:1.5rem;">압도적인 위엄을 자랑하는 단 한 대의 고성능 럭셔리 세단.</p>
+          <div style="display:flex; gap:0.5rem;">
+            <span class="tag">Rare</span><span class="tag">Maybach</span><span class="tag">$8M</span>
+          </div>
+        </div>
+        <div style="text-align:right; font-family:'DM Mono'; color:var(--accent);">OWNED</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 LEE 0-JI EMPIRE. All rights reserved.</p>
+  <p style="font-size:0.6rem; margin-top:1rem; opacity:0.5;">본 페이지는 최상위 자산가 이0지의 공식 포트폴리오입니다.</p>
+</footer>
+
+</body>
+</html>

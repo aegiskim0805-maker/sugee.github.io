@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>이0지 | GLOBAL MAGNATE</title>
+<title>김수지 | High School Student</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;700&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -14,90 +14,85 @@
     --card: #0f0f0f;
     --border: #221f1a;
   }
-  body { background: var(--bg); color: var(--text); font-family: 'Noto Serif KR', serif; margin: 0; overflow-x: hidden; }
+  body { background: var(--bg); color: var(--text); font-family: 'Noto Serif KR', serif; margin: 0; overflow-x: hidden; animation: fadeIn 1s ease-in; }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
   
   /* 헤더/네비게이션 */
-  nav { position: fixed; top: 0; width: 100%; z-index: 100; display: flex; justify-content: space-between; padding: 1.5rem 3rem; background: rgba(0,0,0,0.9); border-bottom: 1px solid var(--border); }
-  .logo { font-family: 'Playfair Display', serif; color: var(--accent); font-size: 1.5rem; font-weight: 900; letter-spacing: 2px; }
+  nav { position: fixed; top: 0; width: 100%; z-index: 100; display: flex; justify-content: space-between; padding: 1.5rem 3rem; background: rgba(0,0,0,0.9); border-bottom: 1px solid var(--border); backdrop-filter: blur(10px); }
+  .logo { font-family: 'Playfair Display', serif; color: var(--accent); font-size: 1.5rem; font-weight: 900; letter-spacing: 2px; text-shadow: 0 0 10px var(--accent); }
 
   /* 히어로 섹션 */
-  #hero { height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; background: radial-gradient(circle, #1a1a1a 0%, #050505 100%); }
-  .hero-content h1 { font-family: 'Playfair Display', serif; font-size: clamp(3rem, 10vw, 8rem); margin: 0; }
+  #hero { height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center; background: radial-gradient(circle, #1a1a1a 0%, #050505 100%); position: relative; }
+  #hero::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="1" fill="%23d4af37" opacity="0.1"/></svg>') repeat; opacity: 0.1; }
+  .hero-content h1 { font-family: 'Playfair Display', serif; font-size: clamp(3rem, 10vw, 8rem); margin: 0; text-shadow: 0 0 20px var(--accent); }
   .hero-content h1 span { color: var(--accent); }
   .hero-content p { font-size: 1.5rem; color: var(--text2); letter-spacing: 5px; text-transform: uppercase; margin-top: 1rem; }
+  .hero-content .info { margin-top: 3rem; color: var(--accent); font-size: 1.2rem; animation: glow 2s ease-in-out infinite alternate; }
+  @keyframes glow { from { text-shadow: 0 0 5px var(--accent); } to { text-shadow: 0 0 20px var(--accent), 0 0 30px var(--accent); } }
 
   /* 섹션 공통 */
   section { padding: 8rem 3rem; max-width: 1200px; margin: 0 auto; }
-  .section-title { font-family: 'Playfair Display', serif; font-size: 3rem; color: var(--accent); margin-bottom: 3rem; border-bottom: 1px solid var(--border); padding-bottom: 1rem; }
+  .section-title { font-family: 'Playfair Display', serif; font-size: 3rem; color: var(--accent); margin-bottom: 3rem; border-bottom: 1px solid var(--border); padding-bottom: 1rem; text-shadow: 0 0 10px var(--accent); }
 
-  /* 차고(Garage) 그리드 */
-  .garage-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
-  .car-card { background: var(--card); border: 1px solid var(--border); padding: 2rem; transition: 0.3s; }
-  .car-card:hover { border-color: var(--accent); transform: translateY(-10px); }
-  .car-price { color: var(--accent); font-weight: bold; font-size: 1.2rem; margin-top: 1rem; }
+  /* 소개 섹션 */
+  .intro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+  .intro-text { font-size: 1.2rem; line-height: 2; color: var(--text2); }
+  .intro-card { background: var(--card); border: 1px solid var(--border); padding: 2rem; text-align: center; box-shadow: 0 4px 8px rgba(0,0,0,0.5); }
+  .intro-card h3 { color: var(--accent); font-size: 3rem; margin: 0; }
+  .intro-card p { margin: 0.5rem 0 0 0; color: var(--text2); }
 
-  /* 정보 테이블 */
-  .wealth-info { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
-  .wealth-text { font-size: 1.2rem; line-height: 2; color: var(--text2); }
+  /* 학교 섹션 */
+  .school-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+  .school-card { background: var(--card); border: 1px solid var(--border); padding: 2rem; transition: all 0.3s ease; box-shadow: 0 4px 8px rgba(0,0,0,0.5); text-align: center; }
+  .school-card:hover { border-color: var(--accent); transform: translateY(-10px); box-shadow: 0 8px 16px rgba(212, 175, 55, 0.3); }
+  .school-card a { color: var(--accent); text-decoration: none; font-weight: bold; }
+  .school-card a:hover { text-decoration: underline; }
 </style>
 </head>
 <body>
 
 <nav>
-  <div class="logo">LEE 0-JI EMPIRE</div>
+  <div class="logo">KIM SU-JI PROFILE</div>
 </nav>
 
 <section id="hero">
   <div class="hero-content">
-    <h1>이<span>0지</span></h1>
-    <p>THE ONLY RIVAL OF ELON MUSK</p>
-    <div style="margin-top: 3rem; color: var(--accent); font-size: 1.2rem;">Asset: Measured in Galaxies</div>
+    <h1>김<span>수지</span></h1>
+    <p>광운인공지능고등학교 고3 학생</p>
+    <div class="info">미래를 향한 AI 탐험가</div>
   </div>
 </section>
 
-<section id="wealth">
-  <h2 class="section-title">01. The Status</h2>
-  <div class="wealth-info">
-    <div class="wealth-text">
-      "나의 재력은 일론 머스크와 함께 세계 경제의 지도를 그립니다. 200대 이상의 하이퍼카 컬렉션은 단순한 탈것이 아닌, 인류 공학의 결정체를 수집한 결과물입니다."
+<section id="intro">
+  <h2 class="section-title">01. 소개</h2>
+  <div class="intro-grid">
+    <div class="intro-text">
+      "안녕하세요! 저는 광운인공지능고등학교에 다니는 고3 학생 김수지입니다. 인공지능과 프로그래밍에 관심이 많아요. 미래 기술을 탐구하며 새로운 아이디어를 실현하는 것을 좋아합니다."
     </div>
-    <div style="border: 1px solid var(--accent); padding: 2rem; text-align: center;">
-      <h3 style="color: var(--accent); font-size: 3rem;">200+</h3>
-      <p>Luxury Hypercars Owned</p>
+    <div class="intro-card">
+      <h3>고3</h3>
+      <p>학년</p>
     </div>
   </div>
 </section>
 
-<section id="garage">
-  <h2 class="section-title">02. Private Garage (Top 5)</h2>
-  <div class="garage-grid">
-    <div class="car-card">
-      <h3>Rolls-Royce Boat Tail</h3>
-      <p>전 세계 단 3대, 당신의 취향이 담긴 움직이는 예술품.</p>
-      <div class="car-price">₩37,000,000,000</div>
-    </div>
-    <div class="car-card">
-      <h3>Bugatti La Voiture Noire</h3>
-      <p>부가티 역사상 가장 비싼 원오프 모델.</p>
-      <div class="car-price">₩24,000,000,000</div>
-    </div>
-    <div class="car-card">
-      <h3>Pagani Zonda HP Barchetta</h3>
-      <p>예술적 극한을 보여주는 하이퍼 로드스터.</p>
-      <div class="car-price">₩23,000,000,000</div>
-    </div>
-    <div class="car-card">
-      <h3>Koenigsegg Jesko Absolut</h3>
-      <p>지상에서 가장 빠른 속도를 위해 설계된 괴물.</p>
-      <div class="car-price">₩5,500,000,000</div>
-    </div>
-    <div class="car-card">
-      <h3>Maybach Exelero</h3>
-      <p>전 세계 1대, 압도적인 존재감을 뿜어내는 수집광의 표본.</p>
-      <div class="car-price">₩10,000,000,000</div>
+<section id="school">
+  <h2 class="section-title">02. 학교 정보</h2>
+  <div class="school-grid">
+    <div class="school-card">
+      <h3>광운인공지능고등학교</h3>
+      <p>인공지능 교육을 선도하는 학교</p>
+      <a href="https://kwangwoon.hs.kr" target="_blank">kwangwoon.hs.kr</a>
     </div>
   </div>
 </section>
+
+</body>
+</html>
 
 <footer style="text-align: center; padding: 5rem; border-top: 1px solid var(--border); color: var(--text2);">
   <p>© 2026 이0지 EMPIRE. FORBES NO.1 CANDIDATE</p>
